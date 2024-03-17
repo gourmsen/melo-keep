@@ -1,0 +1,7 @@
+{
+  "name": "melo-keep",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
