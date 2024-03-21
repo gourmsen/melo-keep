@@ -19,6 +19,10 @@ export const routes: Routes = [
                 loadComponent: () => import("../hub/hub.page").then((m) => m.HubPage),
             },
             {
+                path: "settings",
+                loadComponent: () => import("../settings/settings.page").then((m) => m.SettingsPage),
+            },
+            {
                 path: "",
                 redirectTo: "/tabs/home",
                 pathMatch: "full",
