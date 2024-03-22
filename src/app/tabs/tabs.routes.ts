@@ -15,8 +15,8 @@ export const routes: Routes = [
                 loadComponent: () => import("../repo/repo.page").then((m) => m.RepoPage),
             },
             {
-                path: "hub",
-                loadComponent: () => import("../hub/hub.page").then((m) => m.HubPage),
+                path: "explore",
+                loadComponent: () => import("../explore/explore.page").then((m) => m.ExplorePage),
             },
             {
                 path: "settings",
