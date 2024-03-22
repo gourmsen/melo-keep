@@ -6,7 +6,7 @@ import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel } from "@ionic/angu
 
 // icons
 import { addIcons } from "ionicons";
-import { home, book, planet, cog } from "ionicons/icons";
+import { home, book, layers, cog } from "ionicons/icons";
 
 @Component({
     selector: "app-tabs",
@@ -17,7 +17,7 @@ import { home, book, planet, cog } from "ionicons/icons";
 })
 export class TabsComponent implements OnInit {
     constructor(private environmentInjector: EnvironmentInjector) {
-        addIcons({ home, book, planet, cog });
+        addIcons({ home, book, layers, cog });
     }
 
     ngOnInit() {}
