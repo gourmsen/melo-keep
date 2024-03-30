@@ -10,7 +10,22 @@
       <ion-title size="large">Settings</ion-title>
     </ion-toolbar>
   </ion-header>
-  <div class="ion-text-center">
-    <ion-text color="light">App Version v{{ version }}</ion-text>
+  <div class="ion-padding">
+    <ion-list-header>
+      <ion-label>General</ion-label>
+    </ion-list-header>
+    <ion-list [inset]="true">
+      <ion-item [button]="true" color="light" (click)="showNameAlert()">
+        <ion-label>Name</ion-label>
+        @if (name) {
+        <ion-note slot="end">{{ name }}</ion-note>
+        } @else {
+        <ion-note slot="end">None</ion-note>
+        }
+      </ion-item>
+    </ion-list>
+    <ion-text class="ion-text-center" color="medium">
+      <p>App Version v{{ version }}</p>
+    </ion-text>
   </div>
 </ion-content>
