@@ -1,43 +1,62 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Settings</ion-title>
+    <ion-title>
+      {{ settingsLang?.title || "Settings" }}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Settings</ion-title>
+      <ion-title size="large">
+        {{ settingsLang?.title || "Settings" }}
+      </ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <!-- Content -->
   <div class="ion-padding">
-    @if (genericLang && settingsLang) {
+
+    <!-- General -->
     <ion-list-header>
-      <ion-label>General</ion-label>
+      <ion-label>
+        {{ settingsLang?.general || "General" }}
+      </ion-label>
     </ion-list-header>
     <ion-list [inset]="true">
+
+      <!-- Name -->
       <ion-item [button]="true" color="light" (click)="showNameAlert()">
-        <ion-label>{{ settingsLang.name.title }}</ion-label>
-        @if (name) {
-        <ion-note slot="end">{{ name }}</ion-note>
-        } @else {
-        <ion-note slot="end">{{ genericLang.none }}</ion-note>
-        }
+        <ion-label>
+          {{ settingsLang?.name?.title || "Name" }}
+        </ion-label>
+        <ion-note slot="end">
+          @if (name) {
+          {{ name }}
+          } @else {
+          {{ genericLang?.none || "None" }}
+          }
+        </ion-note>
       </ion-item>
+
+      <!-- Language-->
       <ion-item color="light">
-        <ion-select [label]="settingsLang.language.title" [(ngModel)]="language" [placeholder]="language" color="light"
-          interface="popover" (ionChange)="selectLanguage($event)">
-          <div *ngFor="let langObj of settingsLang.language.langs">
+        <ion-select [(ngModel)]="language" [label]="settingsLang?.language?.title || 'Language'"
+          [placeholder]="genericLang?.default || 'Default'" color="light" interface="popover"
+          (ionChange)="selectLanguage($event)">
+          @if (settingsLang) {
+          <div *ngFor="let langObj of settingsLang.language?.langs">
             <div *ngFor="let lang of langObj | keyvalue">
               <ion-select-option [value]="lang.key">{{ lang.value }}</ion-select-option>
             </div>
           </div>
+          }
         </ion-select>
       </ion-item>
     </ion-list>
     <ion-text class="ion-text-center" color="medium">
       <p>App Version v{{ version }}</p>
     </ion-text>
-    }
   </div>
 </ion-content>

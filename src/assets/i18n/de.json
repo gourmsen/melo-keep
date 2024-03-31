@@ -1,13 +1,23 @@
 {
     "generic": {
         "none": "Nichts",
+        "default": "Default",
         "confirm": "Bestätigen",
         "cancel": "Abbrechen"
     },
     "home": {
+        "title": "Start",
         "welcome": "Willkommen zurück"
     },
+    "repo": {
+        "title": "Repertoire"
+    },
+    "explore": {
+        "title": "Entdecken"
+    },
     "settings": {
+        "title": "Einstellungen",
+        "general": "Allgemein",
         "name": {
             "title": "Name",
             "inputText": "Gib deinen Namen ein"
