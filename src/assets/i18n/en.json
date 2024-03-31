@@ -1,5 +1,18 @@
 {
+    "generic": {
+        "none": "None"
+    },
     "home": {
         "welcome": "Welcome back"
+    },
+    "settings": {
+        "name": {
+            "title": "Name",
+            "inputText": "Enter your name"
+        },
+        "language": {
+            "title": "Language",
+            "langs": [{ "en": "English" }, { "de": "German" }]
+        }
     }
 }

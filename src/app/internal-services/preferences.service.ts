@@ -10,9 +10,11 @@ import { Preferences } from "@capacitor/preferences";
 })
 export class PreferencesService {
     name: string = "";
+    language: string = "";
 
     // observables
     public nameSubject = new BehaviorSubject("");
+    public languageSubject = new BehaviorSubject("");
 
     constructor() {}
 
@@ -39,5 +41,30 @@ export class PreferencesService {
         }
 
         return name;
+    }
+
+    async setLanguage(language: string) {
+        if (language) {
+            await Preferences.set({
+                key: "language",
+                value: language,
+            });
+            this.languageSubject.next(language);
+        } else {
+            await Preferences.remove({ key: "language" });
+            this.languageSubject.next("");
+        }
+    }
+
+    async getLanguage() {
+        let language = await Preferences.get({ key: "language" });
+
+        if (language.value) {
+            this.languageSubject.next(language.value);
+        } else {
+            this.languageSubject.next("");
+        }
+
+        return language;
     }
 }

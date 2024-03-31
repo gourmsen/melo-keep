@@ -26,6 +26,7 @@ import { PreferencesService } from "../internal-services/preferences.service";
 
 // functions
 import * as packageJSON from "../../../package.json";
+import { TranslocoService } from "@jsverse/transloco";
 
 @Component({
     selector: "app-settings",
@@ -51,12 +52,30 @@ export class SettingsPage implements OnInit {
     name: string = "";
     version: string = packageJSON.version;
 
+    // translation objects
+    genericLang: any;
+    settingsLang: any;
+
     // subscriptions
     nameSubscription: Subscription = new Subscription();
 
-    constructor(private alertController: AlertController, private preferences: PreferencesService) {}
+    constructor(
+        private alertController: AlertController,
+        private preferences: PreferencesService,
+        private transloco: TranslocoService
+    ) {}
 
     ngOnInit() {
+        // get generic translations
+        this.transloco.selectTranslateObject("generic").subscribe((t) => {
+            this.genericLang = t;
+        });
+
+        // get settings translations
+        this.transloco.selectTranslateObject("settings").subscribe((t) => {
+            this.settingsLang = t;
+        });
+
         // get name
         this.preferences
             .getName()
@@ -72,12 +91,12 @@ export class SettingsPage implements OnInit {
 
     async showNameAlert() {
         let alert = await this.alertController.create({
-            header: "Name",
+            header: this.settingsLang.name.title,
             inputs: [
                 {
                     name: "name",
                     type: "text",
-                    placeholder: "Enter your name",
+                    placeholder: this.settingsLang.name.inputText,
                     attributes: {
                         maxlength: 20,
                     },

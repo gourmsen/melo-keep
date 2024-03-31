@@ -16,11 +16,15 @@
     </ion-list-header>
     <ion-list [inset]="true">
       <ion-item [button]="true" color="light" (click)="showNameAlert()">
-        <ion-label>Name</ion-label>
+        @if (settingsLang) {
+          <ion-label>{{ settingsLang.name.title }}</ion-label>
+        }
         @if (name) {
         <ion-note slot="end">{{ name }}</ion-note>
         } @else {
-        <ion-note slot="end">None</ion-note>
+        @if (genericLang) {
+        <ion-note slot="end">{{ genericLang.none }}</ion-note>
+        }
         }
       </ion-item>
     </ion-list>
