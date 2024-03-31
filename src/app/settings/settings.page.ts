@@ -16,6 +16,8 @@ import {
     IonList,
     IonItem,
     IonNote,
+    IonSelect,
+    IonSelectOption,
 } from "@ionic/angular/standalone";
 
 // alerts
@@ -44,12 +46,16 @@ import { TranslocoService } from "@jsverse/transloco";
         IonList,
         IonItem,
         IonNote,
+        IonSelect,
+        IonSelectOption,
         CommonModule,
         FormsModule,
     ],
 })
 export class SettingsPage implements OnInit {
     name: string = "";
+    language: string = "";
+
     version: string = packageJSON.version;
 
     // translation objects
@@ -58,6 +64,7 @@ export class SettingsPage implements OnInit {
 
     // subscriptions
     nameSubscription: Subscription = new Subscription();
+    languageSubscription: Subscription = new Subscription();
 
     constructor(
         private alertController: AlertController,
@@ -87,6 +94,18 @@ export class SettingsPage implements OnInit {
             .catch((error) => {
                 console.error(error);
             });
+
+        // get language
+        this.preferences
+            .getLanguage()
+            .then((result) => {
+                this.languageSubscription = this.preferences.languageSubject.subscribe((language) => {
+                    this.language = language;
+                });
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }
 
     async showNameAlert() {
@@ -104,11 +123,11 @@ export class SettingsPage implements OnInit {
             ],
             buttons: [
                 {
-                    text: "Cancel",
+                    text: this.genericLang.cancel,
                     role: "cancel",
                 },
                 {
-                    text: "Confirm",
+                    text: this.genericLang.confirm,
                     role: "confirm",
                     handler: (data) => {
                         this.preferences.setName(data.name);
@@ -120,7 +139,13 @@ export class SettingsPage implements OnInit {
         alert.present();
     }
 
+    selectLanguage(event: any) {
+        this.preferences.setLanguage(event.detail.value);
+        this.transloco.setActiveLang(event.detail.value);
+    }
+
     ngOnDestroy() {
         this.nameSubscription.unsubscribe();
+        this.languageSubscription.unsubscribe();
     }
 }

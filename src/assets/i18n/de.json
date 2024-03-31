@@ -1,6 +1,8 @@
 {
     "generic": {
-        "none": "Nichts"
+        "none": "Nichts",
+        "confirm": "Bestätigen",
+        "cancel": "Abbrechen"
     },
     "home": {
         "welcome": "Willkommen zurück"
