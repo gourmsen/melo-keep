@@ -20,9 +20,11 @@ import {
 // alerts
 import { AlertController } from "@ionic/angular/standalone";
 
+// services
+import { PreferencesService } from "../internal-services/preferences.service";
+
 // functions
 import * as packageJSON from "../../../package.json";
-import { Preferences } from "@capacitor/preferences";
 
 @Component({
     selector: "app-settings",
@@ -48,30 +50,17 @@ export class SettingsPage implements OnInit {
     name: string = "";
     version: string = packageJSON.version;
 
-    constructor(private alertController: AlertController) {}
+    constructor(private alertController: AlertController, private preferences: PreferencesService) {}
 
     ngOnInit() {
         // get name
-        this.getName()
+        this.preferences.getName()
             .then((result) => {
                 this.name = result.value ? result.value : "";
             })
             .catch((error) => {
                 console.error(error);
             });
-    }
-
-    async setName(name: string) {
-        await Preferences.set({
-            key: "name",
-            value: name,
-        });
-    }
-
-    async getName() {
-        let name = await Preferences.get({ key: "name" });
-
-        return name;
     }
 
     async showNameAlert() {
@@ -96,7 +85,7 @@ export class SettingsPage implements OnInit {
                     text: "Confirm",
                     role: "confirm",
                     handler: (data) => {
-                        this.setName(data.name);
+                        this.preferences.setName(data.name);
                         this.name = data.name;
                     },
                 },
