@@ -19,8 +19,10 @@ import { TranslocoService } from "@jsverse/transloco";
     imports: [IonHeader, IonToolbar, IonTitle, IonContent],
 })
 export class HomePage {
-    welcomeText: string = "";
     name: string = "";
+
+    // translation objects
+    homeLang: any;
 
     // subscriptions
     nameSubscription: Subscription = new Subscription();
@@ -28,9 +30,9 @@ export class HomePage {
     constructor(private transloco: TranslocoService, private preferences: PreferencesService) {}
 
     ngOnInit() {
-        // get welcome text
-        this.transloco.selectTranslate("home.welcome").subscribe((t) => {
-            this.welcomeText = t;
+        // get home translations
+        this.transloco.selectTranslateObject("home").subscribe((t) => {
+            this.homeLang = t;
         });
 
         // get name

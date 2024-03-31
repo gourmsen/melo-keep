@@ -1,7 +1,11 @@
+// basic component
 import { Component, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { IonContent, IonHeader, IonTitle, IonToolbar } from "@ionic/angular/standalone";
+
+// functions
+import { TranslocoService } from "@jsverse/transloco";
 
 @Component({
     selector: "app-repo",
@@ -11,7 +15,15 @@ import { IonContent, IonHeader, IonTitle, IonToolbar } from "@ionic/angular/stan
     imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule],
 })
 export class RepoPage implements OnInit {
-    constructor() {}
+    // translation objects
+    repoLang: any;
 
-    ngOnInit() {}
+    constructor(private transloco: TranslocoService) {}
+
+    ngOnInit() {
+        // get repo translations
+        this.transloco.selectTranslateObject("repo").subscribe((t) => {
+            this.repoLang = t;
+        });
+    }
 }
