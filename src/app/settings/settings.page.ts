@@ -2,6 +2,7 @@
 import { Component, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
+import { Subscription } from "rxjs";
 
 // components
 import {
@@ -50,13 +51,19 @@ export class SettingsPage implements OnInit {
     name: string = "";
     version: string = packageJSON.version;
 
+    // subscriptions
+    nameSubscription: Subscription = new Subscription();
+
     constructor(private alertController: AlertController, private preferences: PreferencesService) {}
 
     ngOnInit() {
         // get name
-        this.preferences.getName()
+        this.preferences
+            .getName()
             .then((result) => {
-                this.name = result.value ? result.value : "";
+                this.nameSubscription = this.preferences.nameSubject.subscribe((name) => {
+                    this.name = name;
+                });
             })
             .catch((error) => {
                 console.error(error);
@@ -86,12 +93,15 @@ export class SettingsPage implements OnInit {
                     role: "confirm",
                     handler: (data) => {
                         this.preferences.setName(data.name);
-                        this.name = data.name;
                     },
                 },
             ],
         });
 
         alert.present();
+    }
+
+    ngOnDestroy() {
+        this.nameSubscription.unsubscribe();
     }
 }

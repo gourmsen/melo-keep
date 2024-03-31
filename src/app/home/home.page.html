@@ -13,6 +13,10 @@
     </ion-toolbar>
   </ion-header>
   <div class="ion-padding">
-    <h1>{{ welcomeText }}</h1>
+    @if (name) {
+    <h1>{{ welcomeText }}, {{ name }}!</h1>
+    } @else {
+    <h1>{{ welcomeText }}!</h1>
+    }
   </div>
 </ion-content>
