@@ -1,0 +1,30 @@
+{
+    "generic": {
+        "none": "None",
+        "default": "Default",
+        "confirm": "Confirm",
+        "cancel": "Cancel"
+    },
+    "home": {
+        "title": "Home",
+        "welcome": "Welcome back"
+    },
+    "repo": {
+        "title": "Repertoire"
+    },
+    "explore": {
+        "title": "Explore"
+    },
+    "settings": {
+        "title": "Settings",
+        "general": "General",
+        "name": {
+            "title": "Name",
+            "inputText": "Enter your name"
+        },
+        "language": {
+            "title": "Language",
+            "langs": [{ "en": "English" }, { "de": "German" }]
+        }
+    }
+}
