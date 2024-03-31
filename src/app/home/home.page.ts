@@ -1,5 +1,11 @@
+// basic component
 import { Component } from "@angular/core";
+
+// ionic components
 import { IonHeader, IonToolbar, IonTitle, IonContent } from "@ionic/angular/standalone";
+
+// functions
+import { TranslocoService } from "@jsverse/transloco";
 
 @Component({
     selector: "app-home",
@@ -9,5 +15,14 @@ import { IonHeader, IonToolbar, IonTitle, IonContent } from "@ionic/angular/stan
     imports: [IonHeader, IonToolbar, IonTitle, IonContent],
 })
 export class HomePage {
-    constructor() {}
+    welcomeText: string = "";
+
+    constructor(private transloco: TranslocoService) {}
+
+    ngOnInit() {
+        // get welcome text
+        this.transloco.selectTranslate("home.welcome").subscribe((t) => {
+            this.welcomeText = t;
+        });
+    }
 }
