@@ -6,6 +6,7 @@ import Ajv, { ValidateFunction } from "ajv";
 
 // schemas
 import trackSchema from "../../assets/schemas/track.schema.json";
+import sectionSchema from "../../assets/schemas/section.schema.json";
 
 @Injectable({
     providedIn: "root",
@@ -20,6 +21,7 @@ export class ValidationService {
 
         // compile schemas
         this.validators["trackSchema"] = this.ajv.compile(trackSchema);
+        this.validators["sectionSchema"] = this.ajv.compile(trackSchema);
     }
 
     validate(schemaKey: string, data: any): boolean {

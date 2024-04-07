@@ -1,0 +1,39 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://melo-keep.io/section.schema.json",
+    "title": "Section",
+    "description": "A section of a track",
+    "type": "object",
+    "required": ["_id", "trackId", "name"],
+    "properties": {
+        "_id": {
+            "type": "string",
+            "description": "Unique identifier of the section"
+        },
+        "trackId": {
+            "type": "string",
+            "description": "Unique identifier of the track"
+        },
+        "name": {
+            "type": "string",
+            "description": "Name of the section"
+        },
+        "label": {
+            "type": "string",
+            "description": "Structure label of the section",
+            "pattern": "^[A-Z]$"
+        },
+        "difficulty": {
+            "type": "integer",
+            "description": "Difficulty of the section",
+            "minimum": 1,
+            "maximum": 10
+        },
+        "retention": {
+            "type": "integer",
+            "description": "Retention of the section",
+            "minimum": 1,
+            "maximum": 10
+        }
+    }
+}
