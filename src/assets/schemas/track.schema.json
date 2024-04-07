@@ -1,0 +1,22 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://melo-keep.io/track.schema.json",
+    "title": "Track",
+    "description": "A track in the repertoire",
+    "type": "object",
+    "required": ["_id", "artist", "title"],
+    "properties": {
+        "_id": {
+            "type": "string",
+            "description": "Unique identifier of the track"
+        },
+        "artist": {
+            "type": "string",
+            "description": "Artist of the track"
+        },
+        "title": {
+            "type": "string",
+            "description": "Title of the track"
+        }
+    }
+}
