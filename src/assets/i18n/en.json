@@ -12,6 +12,9 @@
     "repo": {
         "title": "Repertoire"
     },
+    "trackAdd": {
+        "title": "Add Track"
+    },
     "explore": {
         "title": "Explore"
     },

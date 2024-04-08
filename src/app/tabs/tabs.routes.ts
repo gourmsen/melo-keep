@@ -12,7 +12,16 @@ export const routes: Routes = [
             },
             {
                 path: "repo",
-                loadComponent: () => import("../repo/repo.page").then((m) => m.RepoPage),
+                children: [
+                    {
+                        path: "",
+                        loadComponent: () => import("../repo/repo.page").then((m) => m.RepoPage),
+                    },
+                    {
+                        path: "track-add",
+                        loadComponent: () => import("../track-add/track-add.page").then((m) => m.TrackAddPage),
+                    },
+                ],
             },
             {
                 path: "explore",
