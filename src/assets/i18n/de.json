@@ -4,7 +4,8 @@
         "default": "Default",
         "confirm": "Bestätigen",
         "cancel": "Abbrechen",
-        "back": "Zurück"
+        "back": "Zurück",
+        "select": "Auswählen"
     },
     "home": {
         "title": "Start",
@@ -14,7 +15,32 @@
         "title": "Repertoire"
     },
     "trackAdd": {
-        "title": "Song hinzufügen"
+        "title": "Track hinzufügen",
+        "general": {
+            "title": "Allgemein",
+            "artist": "Künstler",
+            "name": "Name",
+            "difficulty": {
+                "title": "Schwierigkeit",
+                "options": [
+                    { "1": "Trivial" },
+                    { "2": "Einfach" },
+                    { "3": "Mittel" },
+                    { "4": "Schwer" },
+                    { "5": "Experte" }
+                ]
+            },
+            "volatility": {
+                "title": "Schwankung",
+                "options": [
+                    { "1": "Unvergessbar" },
+                    { "2": "Merkbar" },
+                    { "3": "Durchschnittlich" },
+                    { "4": "Vergessbar" },
+                    { "5": "Flüchtig" }
+                ]
+            }
+        }
     },
     "explore": {
         "title": "Entdecken"

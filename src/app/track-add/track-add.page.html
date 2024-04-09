@@ -12,5 +12,66 @@
 <ion-content [fullscreen]="true">
   <!-- Content -->
   <div class="ion-padding">
+
+    <!-- General -->
+    <ion-list-header>
+      <ion-label>
+        {{ trackAddLang?.general?.title || "General" }}
+      </ion-label>
+    </ion-list-header>
+
+    <form [formGroup]="generalForm">
+      <ion-list [inset]="true">
+
+        <!-- Artist -->
+        <ion-item color="light">
+          <ion-input [(ngModel)]="artist" formControlName="artist" [label]="trackAddLang?.general?.artist || 'Artist'"
+            class="ion-text-right"></ion-input>
+        </ion-item>
+
+        <!-- Name -->
+        <ion-item color="light">
+          <ion-input [(ngModel)]="name" formControlName="name" [label]="trackAddLang?.general?.name || 'Name'"
+            class="ion-text-right"></ion-input>
+        </ion-item>
+
+        <!-- Difficulty -->
+        <ion-item color="light">
+          <ion-select formControlName="difficulty" [label]="trackAddLang?.general?.difficulty?.title || 'Difficulty'"
+            [placeholder]="genericLang?.select || 'Select'" interface="action-sheet"
+            (ionChange)="selectDifficulty($event)">
+            @if (trackAddLang) {
+            <div *ngFor="let diffObj of trackAddLang.general?.difficulty?.options">
+              <div *ngFor="let diff of diffObj | keyvalue">
+                <ion-select-option [value]="diff.key">{{ diff.value }}</ion-select-option>
+              </div>
+            </div>
+            }
+          </ion-select>
+        </ion-item>
+
+        <!-- Volatility -->
+        <ion-item color="light">
+          <ion-select formControlName="volatility" [label]="trackAddLang?.general?.volatility?.title || 'Volatility'"
+            [placeholder]="genericLang?.select || 'Select'" interface="action-sheet"
+            (ionChange)="selectVolatility($event)">
+            @if (trackAddLang) {
+            <div *ngFor="let volaObj of trackAddLang.general?.volatility?.options">
+              <div *ngFor="let vola of volaObj | keyvalue">
+                <ion-select-option [value]="vola.key">{{ vola.value }}</ion-select-option>
+              </div>
+            </div>
+            }
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    </form>
   </div>
 </ion-content>
+
+<!-- Add Button -->
+<ion-fab slot="fixed" vertical="bottom" horizontal="end">
+  <ion-fab-button [disabled]="!generalForm.valid">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

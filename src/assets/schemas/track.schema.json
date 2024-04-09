@@ -14,21 +14,21 @@
             "type": "string",
             "description": "Artist of the track"
         },
-        "title": {
+        "name": {
             "type": "string",
-            "description": "Title of the track"
+            "description": "Name of the track"
         },
         "difficulty": {
             "type": "integer",
             "description": "General difficulty of the track",
             "minimum": 1,
-            "maximum": 10
+            "maximum": 5
         },
-        "retention": {
+        "volatility": {
             "type": "integer",
-            "description": "General retention of the track",
+            "description": "General volatility of the track",
             "minimum": 1,
-            "maximum": 10
+            "maximum": 5
         }
     }
 }

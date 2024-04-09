@@ -4,7 +4,8 @@
         "default": "Default",
         "confirm": "Confirm",
         "cancel": "Cancel",
-        "back": "Back"
+        "back": "Back",
+        "select": "Select"
     },
     "home": {
         "title": "Home",
@@ -14,7 +15,32 @@
         "title": "Repertoire"
     },
     "trackAdd": {
-        "title": "Add Track"
+        "title": "Add Track",
+        "general": {
+            "title": "General",
+            "artist": "Artist",
+            "name": "Name",
+            "difficulty": {
+                "title": "Difficulty",
+                "options": [
+                    { "1": "Trivial" },
+                    { "2": "Easy" },
+                    { "3": "Medium" },
+                    { "4": "Hard" },
+                    { "5": "Expert" }
+                ]
+            },
+            "volatility": {
+                "title": "Volatility",
+                "options": [
+                    { "1": "Indelible" },
+                    { "2": "Memorable" },
+                    { "3": "Average" },
+                    { "4": "Forgettable" },
+                    { "5": "Ephemeral" }
+                ]
+            }
+        }
     },
     "explore": {
         "title": "Explore"
