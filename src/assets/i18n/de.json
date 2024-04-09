@@ -3,7 +3,8 @@
         "none": "Nichts",
         "default": "Default",
         "confirm": "Bestätigen",
-        "cancel": "Abbrechen"
+        "cancel": "Abbrechen",
+        "back": "Zurück"
     },
     "home": {
         "title": "Start",

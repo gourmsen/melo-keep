@@ -1,5 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [text]="genericLang?.back || 'Back'"></ion-back-button>
+    </ion-buttons>
     <ion-title>
       {{ trackAddLang?.title || "Add Track" }}
     </ion-title>
@@ -7,11 +10,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">
-        {{ trackAddLang?.title || "Add Track" }}
-      </ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <!-- Content -->
+  <div class="ion-padding">
+  </div>
 </ion-content>

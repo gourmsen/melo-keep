@@ -3,7 +3,8 @@
         "none": "None",
         "default": "Default",
         "confirm": "Confirm",
-        "cancel": "Cancel"
+        "cancel": "Cancel",
+        "back": "Back"
     },
     "home": {
         "title": "Home",
