@@ -39,6 +39,17 @@
                     { "4": "Vergessbar" },
                     { "5": "Flüchtig" }
                 ]
+            },
+            "instrument": {
+                "title": "Instrument",
+                "options": [
+                    { "guitar": "Gitarre" },
+                    { "bass": "Bass" },
+                    { "drums": "Schlagzeug" },
+                    { "piano": "Klavier" },
+                    { "violin": "Geige" },
+                    { "accordion": "Akkordion" }
+                ]
             }
         }
     },

@@ -64,6 +64,21 @@
             }
           </ion-select>
         </ion-item>
+
+        <!-- Instrument -->
+        <ion-item color="light">
+          <ion-select formControlName="instrument" [label]="trackAddLang?.general?.instrument?.title || 'Instrument'"
+            [placeholder]="genericLang?.select || 'Select'" interface="action-sheet"
+            (ionChange)="selectInstrument($event)">
+            @if (trackAddLang) {
+            <div *ngFor="let instObj of trackAddLang.general?.instrument?.options">
+              <div *ngFor="let inst of instObj | keyvalue">
+                <ion-select-option [value]="inst.key">{{ inst.value }}</ion-select-option>
+              </div>
+            </div>
+            }
+          </ion-select>
+        </ion-item>
       </ion-list>
     </form>
   </div>
@@ -71,7 +86,7 @@
 
 <!-- Add Button -->
 <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-  <ion-fab-button [disabled]="!generalForm.valid">
+  <ion-fab-button [disabled]="!generalForm.valid" (click)="addTrack()">
     <ion-icon name="add"></ion-icon>
   </ion-fab-button>
 </ion-fab>

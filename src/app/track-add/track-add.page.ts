@@ -25,6 +25,8 @@ import {
 
 // functions
 import { TranslocoService } from "@jsverse/transloco";
+import { ValidationService } from "../internal-services/validation.service";
+import { PouchDBService } from "../internal-services/pouchdb.service";
 
 // icons
 import { addIcons } from "ionicons";
@@ -62,6 +64,7 @@ export class TrackAddPage implements OnInit {
     name: string = "";
     difficulty: number = 0;
     volatility: number = 0;
+    instrument: string = "";
 
     // forms
     generalForm: FormGroup;
@@ -70,7 +73,11 @@ export class TrackAddPage implements OnInit {
     genericLang: any;
     trackAddLang: any;
 
-    constructor(private transloco: TranslocoService) {
+    constructor(
+        private transloco: TranslocoService,
+        private validation: ValidationService,
+        private pouchDB: PouchDBService
+    ) {
         addIcons({ add });
 
         this.generalForm = new FormGroup({
@@ -78,6 +85,7 @@ export class TrackAddPage implements OnInit {
             name: new FormControl("", Validators.required),
             difficulty: new FormControl("", Validators.required),
             volatility: new FormControl("", Validators.required),
+            instrument: new FormControl("", Validators.required),
         });
     }
 
@@ -94,10 +102,33 @@ export class TrackAddPage implements OnInit {
     }
 
     selectDifficulty(event: any) {
-        this.difficulty = event.detail.value;
+        this.difficulty = parseInt(event.detail.value);
     }
 
     selectVolatility(event: any) {
-        this.volatility = event.detail.value;
+        this.volatility = parseInt(event.detail.value);
+    }
+
+    selectInstrument(event: any) {
+        this.instrument = event.detail.value;
+    }
+
+    addTrack() {
+        let trackId = this.pouchDB.getId();
+
+        let trackDoc = {
+            _id: trackId,
+            artist: this.artist,
+            name: this.name,
+            difficulty: this.difficulty,
+            volatility: this.volatility,
+            instrument: this.instrument,
+        };
+
+        let isValid = this.validation.validate("trackSchema", trackDoc);
+
+        if (isValid) {
+            this.pouchDB.addDocument(trackDoc);
+        }
     }
 }

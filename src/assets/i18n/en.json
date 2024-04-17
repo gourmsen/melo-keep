@@ -22,13 +22,7 @@
             "name": "Name",
             "difficulty": {
                 "title": "Difficulty",
-                "options": [
-                    { "1": "Trivial" },
-                    { "2": "Easy" },
-                    { "3": "Medium" },
-                    { "4": "Hard" },
-                    { "5": "Expert" }
-                ]
+                "options": [{ "1": "Trivial" }, { "2": "Easy" }, { "3": "Medium" }, { "4": "Hard" }, { "5": "Expert" }]
             },
             "volatility": {
                 "title": "Volatility",
@@ -38,6 +32,17 @@
                     { "3": "Average" },
                     { "4": "Forgettable" },
                     { "5": "Ephemeral" }
+                ]
+            },
+            "instrument": {
+                "title": "Instrument",
+                "options": [
+                    { "guitar": "Guitar" },
+                    { "bass": "Bass" },
+                    { "drums": "Drums" },
+                    { "piano": "Piano" },
+                    { "violin": "Violin" },
+                    { "accordion": "Accordion" }
                 ]
             }
         }

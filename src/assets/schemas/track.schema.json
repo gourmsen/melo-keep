@@ -4,7 +4,7 @@
     "title": "Track",
     "description": "A track in the repertoire",
     "type": "object",
-    "required": ["_id", "artist", "title"],
+    "required": ["_id", "artist", "name", "difficulty", "volatility", "instrument"],
     "properties": {
         "_id": {
             "type": "string",
@@ -29,6 +29,10 @@
             "description": "General volatility of the track",
             "minimum": 1,
             "maximum": 5
+        },
+        "instrument": {
+            "type": "string",
+            "description": "Instrument on which the track is being played"
         }
     }
 }
