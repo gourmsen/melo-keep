@@ -62,12 +62,18 @@ export class TrackAddPage implements OnInit {
     // generalForm
     artist: string = "";
     name: string = "";
+
+    // retention form
     difficulty: number = 0;
     volatility: number = 0;
+
+    // instrument form
     instrument: string = "";
 
     // forms
     generalForm: FormGroup;
+    retentionForm: FormGroup;
+    instrumentForm: FormGroup;
 
     // translation objects
     genericLang: any;
@@ -83,8 +89,14 @@ export class TrackAddPage implements OnInit {
         this.generalForm = new FormGroup({
             artist: new FormControl("", Validators.required),
             name: new FormControl("", Validators.required),
+        });
+
+        this.retentionForm = new FormGroup({
             difficulty: new FormControl("", Validators.required),
             volatility: new FormControl("", Validators.required),
+        });
+
+        this.instrumentForm = new FormGroup({
             instrument: new FormControl("", Validators.required),
         });
     }

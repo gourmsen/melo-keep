@@ -19,7 +19,10 @@
         "general": {
             "title": "Allgemein",
             "artist": "Künstler",
-            "name": "Name",
+            "name": "Name"
+        },
+        "retention": {
+            "title": "Retention",
             "difficulty": {
                 "title": "Schwierigkeit",
                 "options": [
@@ -39,7 +42,10 @@
                     { "4": "Vergessbar" },
                     { "5": "Flüchtig" }
                 ]
-            },
+            }
+        },
+        "instrument": {
+            "title": "Instrument",
             "instrument": {
                 "title": "Instrument",
                 "options": [

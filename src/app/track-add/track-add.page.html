@@ -35,13 +35,25 @@
             class="ion-text-right"></ion-input>
         </ion-item>
 
+      </ion-list>
+    </form>
+
+    <!-- Retention -->
+    <ion-list-header>
+      <ion-label>
+        {{ trackAddLang?.retention?.title || "Retention" }}
+      </ion-label>
+    </ion-list-header>
+
+    <form [formGroup]="retentionForm">
+      <ion-list [inset]="true">
         <!-- Difficulty -->
         <ion-item color="light">
-          <ion-select formControlName="difficulty" [label]="trackAddLang?.general?.difficulty?.title || 'Difficulty'"
+          <ion-select formControlName="difficulty" [label]="trackAddLang?.retention?.difficulty?.title || 'Difficulty'"
             [placeholder]="genericLang?.select || 'Select'" interface="action-sheet"
             (ionChange)="selectDifficulty($event)">
             @if (trackAddLang) {
-            <div *ngFor="let diffObj of trackAddLang.general?.difficulty?.options">
+            <div *ngFor="let diffObj of trackAddLang.retention?.difficulty?.options">
               <div *ngFor="let diff of diffObj | keyvalue">
                 <ion-select-option [value]="diff.key">{{ diff.value }}</ion-select-option>
               </div>
@@ -52,11 +64,11 @@
 
         <!-- Volatility -->
         <ion-item color="light">
-          <ion-select formControlName="volatility" [label]="trackAddLang?.general?.volatility?.title || 'Volatility'"
+          <ion-select formControlName="volatility" [label]="trackAddLang?.retention?.volatility?.title || 'Volatility'"
             [placeholder]="genericLang?.select || 'Select'" interface="action-sheet"
             (ionChange)="selectVolatility($event)">
             @if (trackAddLang) {
-            <div *ngFor="let volaObj of trackAddLang.general?.volatility?.options">
+            <div *ngFor="let volaObj of trackAddLang.retention?.volatility?.options">
               <div *ngFor="let vola of volaObj | keyvalue">
                 <ion-select-option [value]="vola.key">{{ vola.value }}</ion-select-option>
               </div>
@@ -64,14 +76,25 @@
             }
           </ion-select>
         </ion-item>
+      </ion-list>
+    </form>
 
+    <!-- Instrument -->
+    <ion-list-header>
+      <ion-label>
+        {{ trackAddLang?.instrument?.title || "Instrument" }}
+      </ion-label>
+    </ion-list-header>
+
+    <form [formGroup]="instrumentForm">
+      <ion-list [inset]="true">
         <!-- Instrument -->
         <ion-item color="light">
-          <ion-select formControlName="instrument" [label]="trackAddLang?.general?.instrument?.title || 'Instrument'"
+          <ion-select formControlName="instrument" [label]="trackAddLang?.instrument?.instrument?.title || 'Instrument'"
             [placeholder]="genericLang?.select || 'Select'" interface="action-sheet"
             (ionChange)="selectInstrument($event)">
             @if (trackAddLang) {
-            <div *ngFor="let instObj of trackAddLang.general?.instrument?.options">
+            <div *ngFor="let instObj of trackAddLang.instrument?.instrument?.options">
               <div *ngFor="let inst of instObj | keyvalue">
                 <ion-select-option [value]="inst.key">{{ inst.value }}</ion-select-option>
               </div>
@@ -86,7 +109,7 @@
 
 <!-- Add Button -->
 <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-  <ion-fab-button [disabled]="!generalForm.valid" (click)="addTrack()">
+  <ion-fab-button [disabled]="!generalForm.valid || !retentionForm.valid || !instrumentForm.valid" (click)="addTrack()">
     <ion-icon name="add"></ion-icon>
   </ion-fab-button>
 </ion-fab>
