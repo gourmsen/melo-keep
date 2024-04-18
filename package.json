@@ -1,6 +1,6 @@
 {
   "name": "melo-keep",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
   "scripts": {
@@ -33,6 +33,7 @@
     "@types/pouchdb": "^6.4.2",
     "ajv": "^8.12.0",
     "ionicons": "^7.2.1",
+    "nanoid": "^5.0.7",
     "pouchdb": "^8.0.1",
     "pouchdb-find": "^8.0.1",
     "rxjs": "~7.8.0",

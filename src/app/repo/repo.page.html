@@ -3,6 +3,11 @@
     <ion-title>
       {{ repoLang?.title || "Repertoire" }}
     </ion-title>
+    <ion-buttons [collapse]="true" slot="end">
+      <ion-button>
+        <ion-icon name="add-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -12,6 +17,11 @@
       <ion-title size="large">
         {{ repoLang?.title || "Repertoire" }}
       </ion-title>
+      <ion-buttons [collapse]="true" slot="end">
+        <ion-button id="addButton" routerLink="./track-add">
+          <ion-icon name="add-circle"></ion-icon>
+        </ion-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
 </ion-content>

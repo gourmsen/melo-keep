@@ -4,31 +4,39 @@
     "title": "Track",
     "description": "A track in the repertoire",
     "type": "object",
-    "required": ["_id", "artist", "title"],
+    "required": ["_id", "ownerId", "artist", "name", "difficulty", "volatility", "instrument"],
     "properties": {
         "_id": {
             "type": "string",
             "description": "Unique identifier of the track"
         },
+        "ownerId": {
+            "type": "string",
+            "description": "UserId of the track owner"
+        },
         "artist": {
             "type": "string",
             "description": "Artist of the track"
         },
-        "title": {
+        "name": {
             "type": "string",
-            "description": "Title of the track"
+            "description": "Name of the track"
         },
         "difficulty": {
             "type": "integer",
             "description": "General difficulty of the track",
             "minimum": 1,
-            "maximum": 10
+            "maximum": 5
         },
-        "retention": {
+        "volatility": {
             "type": "integer",
-            "description": "General retention of the track",
+            "description": "General volatility of the track",
             "minimum": 1,
-            "maximum": 10
+            "maximum": 5
+        },
+        "instrument": {
+            "type": "string",
+            "description": "Instrument on which the track is being played"
         }
     }
 }

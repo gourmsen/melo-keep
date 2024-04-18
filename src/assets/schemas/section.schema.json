@@ -4,7 +4,7 @@
     "title": "Section",
     "description": "A section of a track",
     "type": "object",
-    "required": ["_id", "trackId", "name"],
+    "required": ["_id", "trackId", "ownerId", "name"],
     "properties": {
         "_id": {
             "type": "string",
@@ -13,6 +13,10 @@
         "trackId": {
             "type": "string",
             "description": "Unique identifier of the track"
+        },
+        "ownerId": {
+            "type": "string",
+            "description": "UserId of the section owner"
         },
         "name": {
             "type": "string",
@@ -27,13 +31,13 @@
             "type": "integer",
             "description": "Difficulty of the section",
             "minimum": 1,
-            "maximum": 10
+            "maximum": 5
         },
-        "retention": {
+        "volatility": {
             "type": "integer",
-            "description": "Retention of the section",
+            "description": "Volatility of the section",
             "minimum": 1,
-            "maximum": 10
+            "maximum": 5
         }
     }
 }

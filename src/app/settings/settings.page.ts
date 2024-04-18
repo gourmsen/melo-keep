@@ -55,6 +55,7 @@ import { TranslocoService } from "@jsverse/transloco";
 export class SettingsPage implements OnInit {
     name: string = "";
     language: string = "";
+    userId: string = "";
 
     version: string = packageJSON.version;
 
@@ -65,6 +66,7 @@ export class SettingsPage implements OnInit {
     // subscriptions
     nameSubscription: Subscription = new Subscription();
     languageSubscription: Subscription = new Subscription();
+    userIdSubscription: Subscription = new Subscription();
 
     constructor(
         private alertController: AlertController,
@@ -106,16 +108,28 @@ export class SettingsPage implements OnInit {
             .catch((error) => {
                 console.error(error);
             });
+
+        // get userId
+        this.preferences
+            .getUserId()
+            .then((result) => {
+                this.userIdSubscription = this.preferences.userIdSubject.subscribe((userId) => {
+                    this.userId = userId;
+                });
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }
 
     async showNameAlert() {
         let alert = await this.alertController.create({
-            header: this.settingsLang.name.title,
+            header: this.settingsLang.general.name.title,
             inputs: [
                 {
                     name: "name",
                     type: "text",
-                    placeholder: this.settingsLang.name.inputText,
+                    placeholder: this.settingsLang.general.name.inputText,
                     attributes: {
                         maxlength: 20,
                     },

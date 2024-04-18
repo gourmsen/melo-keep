@@ -3,7 +3,9 @@
         "none": "None",
         "default": "Default",
         "confirm": "Confirm",
-        "cancel": "Cancel"
+        "cancel": "Cancel",
+        "back": "Back",
+        "select": "Select"
     },
     "home": {
         "title": "Home",
@@ -12,19 +14,65 @@
     "repo": {
         "title": "Repertoire"
     },
+    "trackAdd": {
+        "title": "Add Track",
+        "general": {
+            "title": "General",
+            "artist": "Artist",
+            "name": "Name"
+        },
+        "retention": {
+            "title": "Retention",
+            "difficulty": {
+                "title": "Difficulty",
+                "options": [{ "1": "Trivial" }, { "2": "Easy" }, { "3": "Medium" }, { "4": "Hard" }, { "5": "Expert" }]
+            },
+            "volatility": {
+                "title": "Volatility",
+                "options": [
+                    { "1": "Indelible" },
+                    { "2": "Memorable" },
+                    { "3": "Average" },
+                    { "4": "Forgettable" },
+                    { "5": "Ephemeral" }
+                ]
+            }
+        },
+        "instrument": {
+            "title": "Instrument",
+            "instrument": {
+                "title": "Instrument",
+                "options": [
+                    { "guitar": "Guitar" },
+                    { "bass": "Bass" },
+                    { "drums": "Drums" },
+                    { "piano": "Piano" },
+                    { "violin": "Violin" },
+                    { "accordion": "Accordion" }
+                ]
+            }
+        }
+    },
     "explore": {
         "title": "Explore"
     },
     "settings": {
         "title": "Settings",
-        "general": "General",
-        "name": {
-            "title": "Name",
-            "inputText": "Enter your name"
+        "general": {
+            "title": "General",
+            "name": {
+                "title": "Name",
+                "inputText": "Enter your name"
+            },
+            "language": {
+                "title": "Language",
+                "langs": [{ "en": "English" }, { "de": "German" }]
+            }
         },
-        "language": {
-            "title": "Language",
-            "langs": [{ "en": "English" }, { "de": "German" }]
+        "about": {
+            "title": "About",
+            "userId": "User-ID",
+            "version": "App-Version"
         }
     }
 }

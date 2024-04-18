@@ -7,6 +7,9 @@ import { Subscription } from "rxjs";
 import { PreferencesService } from "./internal-services/preferences.service";
 import { TranslocoService } from "@jsverse/transloco";
 
+// functions
+import { nanoid } from "nanoid";
+
 @Component({
     selector: "app-root",
     templateUrl: "app.component.html",
@@ -14,6 +17,10 @@ import { TranslocoService } from "@jsverse/transloco";
     imports: [IonApp, IonRouterOutlet],
 })
 export class AppComponent {
+    userId: string = "";
+
+    // subscriptions
+    userIdSubscription: Subscription = new Subscription();
     languageSubscription: Subscription = new Subscription();
 
     constructor(private preferences: PreferencesService, private transloco: TranslocoService) {}
@@ -30,9 +37,26 @@ export class AppComponent {
             .catch((error) => {
                 console.error(error);
             });
+
+        // set userId (when none exists)
+        this.preferences
+            .getUserId()
+            .then((result) => {
+                this.userIdSubscription = this.preferences.userIdSubject.subscribe((userId) => {
+                    this.userId = userId;
+                });
+
+                if (!this.userId) {
+                    this.preferences.setUserId(nanoid(10));
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }
 
     ngOnDestroy() {
+        this.userIdSubscription.unsubscribe();
         this.languageSubscription.unsubscribe();
     }
 }
