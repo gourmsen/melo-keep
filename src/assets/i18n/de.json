@@ -64,14 +64,21 @@
     },
     "settings": {
         "title": "Einstellungen",
-        "general": "Allgemein",
-        "name": {
-            "title": "Name",
-            "inputText": "Gib deinen Namen ein"
+        "general": {
+            "title": "Allgemein",
+            "name": {
+                "title": "Name",
+                "inputText": "Gib deinen Namen ein"
+            },
+            "language": {
+                "title": "Sprache",
+                "langs": [{ "en": "Englisch" }, { "de": "Deutsch" }]
+            }
         },
-        "language": {
-            "title": "Sprache",
-            "langs": [{ "en": "Englisch" }, { "de": "Deutsch" }]
+        "about": {
+            "title": "Über die App",
+            "userId": "Benutzer-ID",
+            "version": "App-Version"
         }
     }
 }

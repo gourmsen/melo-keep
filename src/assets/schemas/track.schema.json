@@ -4,11 +4,15 @@
     "title": "Track",
     "description": "A track in the repertoire",
     "type": "object",
-    "required": ["_id", "artist", "name", "difficulty", "volatility", "instrument"],
+    "required": ["_id", "ownerId", "artist", "name", "difficulty", "volatility", "instrument"],
     "properties": {
         "_id": {
             "type": "string",
             "description": "Unique identifier of the track"
+        },
+        "ownerId": {
+            "type": "string",
+            "description": "UserId of the track owner"
         },
         "artist": {
             "type": "string",

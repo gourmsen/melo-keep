@@ -21,7 +21,7 @@
     <!-- General -->
     <ion-list-header>
       <ion-label>
-        {{ settingsLang?.general || "General" }}
+        {{ settingsLang?.general?.title || "General" }}
       </ion-label>
     </ion-list-header>
     <ion-list [inset]="true">
@@ -29,7 +29,7 @@
       <!-- Name -->
       <ion-item [button]="true" color="light" (click)="showNameAlert()">
         <ion-label>
-          {{ settingsLang?.name?.title || "Name" }}
+          {{ settingsLang?.general?.name?.title || "Name" }}
         </ion-label>
         <ion-note slot="end">
           @if (name) {
@@ -42,11 +42,11 @@
 
       <!-- Language-->
       <ion-item color="light">
-        <ion-select [(ngModel)]="language" [label]="settingsLang?.language?.title || 'Language'"
+        <ion-select [(ngModel)]="language" [label]="settingsLang?.general?.language?.title || 'Language'"
           [placeholder]="genericLang?.default || 'Default'" color="light" interface="popover"
           (ionChange)="selectLanguage($event)">
           @if (settingsLang) {
-          <div *ngFor="let langObj of settingsLang.language?.langs">
+          <div *ngFor="let langObj of settingsLang.general?.language?.langs">
             <div *ngFor="let lang of langObj | keyvalue">
               <ion-select-option [value]="lang.key">{{ lang.value }}</ion-select-option>
             </div>
@@ -55,6 +55,36 @@
         </ion-select>
       </ion-item>
     </ion-list>
+
+    <!-- About -->
+    <ion-list-header>
+      <ion-label>
+        {{ settingsLang?.about?.title || "About" }}
+      </ion-label>
+    </ion-list-header>
+    <ion-list [inset]="true">
+
+      <!-- User-ID -->
+      <ion-item color="light">
+        <ion-label>
+          {{ settingsLang?.about?.userId || "User-ID" }}
+        </ion-label>
+        <ion-note slot="end">
+          {{ userId }}
+        </ion-note>
+      </ion-item>
+
+      <!-- App-Version -->
+      <ion-item color="light">
+        <ion-label>
+          {{ settingsLang?.about?.version || "App-Version" }}
+        </ion-label>
+        <ion-note slot="end">
+          v{{ version }}
+        </ion-note>
+      </ion-item>
+    </ion-list>
+
     <ion-text class="ion-text-center" color="medium">
       <p>App Version v{{ version }}</p>
     </ion-text>

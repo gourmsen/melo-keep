@@ -2,6 +2,7 @@
 import { Component, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from "@angular/forms";
+import { Subscription } from "rxjs";
 
 // ionic components
 import {
@@ -22,6 +23,9 @@ import {
     IonSelect,
     IonSelectOption,
 } from "@ionic/angular/standalone";
+
+// services
+import { PreferencesService } from "../internal-services/preferences.service";
 
 // functions
 import { TranslocoService } from "@jsverse/transloco";
@@ -59,6 +63,8 @@ import { add } from "ionicons/icons";
     ],
 })
 export class TrackAddPage implements OnInit {
+    userId: string = "";
+
     // generalForm
     artist: string = "";
     name: string = "";
@@ -79,10 +85,14 @@ export class TrackAddPage implements OnInit {
     genericLang: any;
     trackAddLang: any;
 
+    // subscriptions
+    userIdSubscription: Subscription = new Subscription();
+
     constructor(
         private transloco: TranslocoService,
         private validation: ValidationService,
-        private pouchDB: PouchDBService
+        private pouchDB: PouchDBService,
+        private preferences: PreferencesService
     ) {
         addIcons({ add });
 
@@ -111,6 +121,18 @@ export class TrackAddPage implements OnInit {
         this.transloco.selectTranslateObject("trackAdd").subscribe((t) => {
             this.trackAddLang = t;
         });
+
+        // get userId
+        this.preferences
+            .getUserId()
+            .then((result) => {
+                this.userIdSubscription = this.preferences.userIdSubject.subscribe((userId) => {
+                    this.userId = userId;
+                });
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }
 
     selectDifficulty(event: any) {
@@ -130,6 +152,7 @@ export class TrackAddPage implements OnInit {
 
         let trackDoc = {
             _id: trackId,
+            ownerId: this.userId,
             artist: this.generalForm.get("artist")?.value,
             name: this.generalForm.get("name")?.value,
             difficulty: this.difficulty,

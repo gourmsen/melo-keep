@@ -9,14 +9,41 @@ import { Preferences } from "@capacitor/preferences";
     providedIn: "root",
 })
 export class PreferencesService {
+    userId: string = "";
     name: string = "";
     language: string = "";
 
     // observables
+    public userIdSubject = new BehaviorSubject("");
     public nameSubject = new BehaviorSubject("");
     public languageSubject = new BehaviorSubject("");
 
     constructor() {}
+
+    async setUserId(userId: string) {
+        if (userId) {
+            await Preferences.set({
+                key: "userId",
+                value: userId,
+            });
+            this.userIdSubject.next(userId);
+        } else {
+            await Preferences.remove({ key: "userId" });
+            this.userIdSubject.next("");
+        }
+    }
+
+    async getUserId() {
+        let userId = await Preferences.get({ key: "userId" });
+
+        if (userId.value) {
+            this.userIdSubject.next(userId.value);
+        } else {
+            this.userIdSubject.next("");
+        }
+
+        return userId;
+    }
 
     async setName(name: string) {
         if (name) {
