@@ -130,8 +130,8 @@ export class TrackAddPage implements OnInit {
 
         let trackDoc = {
             _id: trackId,
-            artist: this.artist,
-            name: this.name,
+            artist: this.generalForm.get("artist")?.value,
+            name: this.generalForm.get("name")?.value,
             difficulty: this.difficulty,
             volatility: this.volatility,
             instrument: this.instrument,
